@@ -8,9 +8,6 @@ public class Cheese {
         this.name = "Cheese";
     }
 
-    public void addCarrot(){
-        System.out.println("Adding " + getName() + " ... " + " price : " + getPrice());
-    }
 
     public double getPrice() {
         return price;

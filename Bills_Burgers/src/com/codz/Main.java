@@ -14,7 +14,7 @@ public class Main {
 ////        Hamburger ham2 = new Hamburger();
 ////        System.out.println("Current number of hamburgers made : " + ham.getNumberOfBurgersMade());
 
-        HealthyBurger ham = new HealthyBurger(false, false);
+//        HealthyBurger ham = new HealthyBurger(false, false);
 
 //        SellBurger.setBasics();
 //        System.out.println("We broke out of the while statement");
@@ -25,12 +25,20 @@ public class Main {
 //        System.out.println(list.contains(i));
 
         System.out.println("Welcome !!");
-//        setBasics();
-        System.out.println(ham.getPrice());
-        System.out.println(ham.getCarrot().getName());
+//        SellBurger.chooseRegularToppings();
+//        SellBurger.sellBurger();
+
+        Hamburger hamburger = new DeluxHamburger();
+        hamburger.addLettuce();
+        hamburger.addTomato();
+        hamburger.addCarrot();
+        hamburger.addCheese();
+
+        System.out.println("Total price of " + hamburger.getName() + " is " + hamburger.customizeBurger());
+        System.out.println("Total number of burgers sold " + hamburger.countSoldBurger());
+
 
     }
-
 
 
 }

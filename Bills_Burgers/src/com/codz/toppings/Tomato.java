@@ -8,10 +8,6 @@ public class Tomato {
         this.name = "Tomato";
     }
 
-    public void addTomato(){
-        System.out.println("Adding " + getName() + " ... " + " price : " + getPrice());
-    }
-
     public static double getPrice() {
         return price;
     }

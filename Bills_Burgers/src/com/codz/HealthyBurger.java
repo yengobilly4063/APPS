@@ -1,46 +1,49 @@
 package com.codz;
 
-public class HealthyBurger extends Hamburger {
+import com.codz.extras.Ketchup;
+import com.codz.extras.Salad;
 
-    private boolean ketchup;
-    private boolean salad;
+public class HealthyBurger extends Hamburger{
 
-    private final double x_ketchup = 0.3;
-    private final double x_salad = 0.4;
+    private Ketchup ketchup;
+    private Salad salad;
 
-    public HealthyBurger(boolean ketchup, boolean salad ) {
-        super("brown rye bread roll", "small beef");
-        this.ketchup = ketchup;
-        this.salad = salad;
-        double newPrice = 0;
-        if (ketchup){
-            newPrice += this.x_ketchup;
-            System.out.println("Adding price of ketchup " + this.x_ketchup);
-        }
-        if(salad){
-            newPrice += this.x_salad;
-            System.out.println("Adding price of salad " + this.x_salad);
-        }
-        if ( !salad && !ketchup){
-            System.out.println("No extras were added");
-        }
-        newPrice += super.getBasePrice();
-        super.setPrice(newPrice);
-        System.out.println("Current price is " + super.getPrice());
+    //Burger Price
+    private double price;
+    private final double basePrice = 2.7;
 
+    public HealthyBurger() {
+        super.setName("Healthy Burger");
+        super.setBreadRollType("brown rye");
+        this.setMeat("Bacon");
+        this.price = basePrice;
+
+        super.countSoldBurger();
     }
 
-    public boolean isKetchup() {
-        return ketchup;
+    public void addKetchup(){
+        this.ketchup = new Ketchup();
+        System.out.println("Added " + ketchup.getName() + " ... " + " price : " + ketchup.getPrice());
     }
 
-    public boolean isSalad() {
-        return salad;
+    public void addSalad(){
+        this.salad = new Salad();
+        System.out.println("Added " + salad.getName() + " ... " + " price : " + salad.getPrice());
     }
 
     @Override
-    public double getBasePrice() {
-        System.out.println("HealthyBurger().getBasePrice()-->");
-        return super.getBasePrice();
+    public double customizeBurger() {
+        this.price =  super.customizeBurger();
+
+        if ( ketchup != null){
+            this.price += ketchup.getPrice();
+            System.out.println("Added " + ketchup.getName() + " ... " + " price : " + ketchup.getPrice());
+        }
+        if ( salad != null){
+            this.price += salad.getPrice();
+            System.out.println("Added " + salad.getName() + " ... " + " price : " + salad.getPrice());
+        }
+
+        return price;
     }
 }

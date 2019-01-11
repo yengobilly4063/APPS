@@ -8,10 +8,6 @@ public class Lettuce {
         this.name = "Lettuce";
     }
 
-    public void addLettuce(){
-        System.out.println("Adding " + getName() + " ... " + " price : " + getPrice());
-    }
-
     public String getName() {
         return name;
     }
