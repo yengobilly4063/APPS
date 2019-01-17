@@ -16,6 +16,9 @@ public class Hamburger {
     private Carrot carrot;
     private Cheese cheese;
 
+    //Accounting Purpose
+    private static int number_of_hamburgers_sold;
+
 
     //Burger Price
     private double price;
@@ -27,48 +30,47 @@ public class Hamburger {
         this.breadRollType = "white";
         this.meat = "Small Beef flat";
         this.price = basePrice;
-        countSoldBurger();
     }
 
     //Adding Toppings
     public void addLettuce(){
         this.lettuce = new Lettuce();
+        System.out.println("Added " + lettuce.getName() + " ... " + " price : " + lettuce.getPrice());
     }
 
     public void addTomato(){
         this.tomato = new Tomato();
+        System.out.println("Added " + tomato.getName() + " ... " + " price : " + tomato.getPrice());
     }
 
     public void addCarrot(){
         this.carrot = new Carrot();
+        System.out.println("Added " + carrot.getName() + " ... " + " price : " + carrot.getPrice());
     }
 
     public void addCheese(){
         this.cheese = new Cheese();
+        System.out.println("Added " + cheese.getName() + " ... " + " price : " + cheese.getPrice());
     }
 
     //Customizing burger
-    public  double customizeBurger(){
+    public void customizeBurger(){
         System.out.println("Customizing burger ...");
-        System.out.println("Base price of " + this.name + " Burger with " + this.breadRollType +
-                " roll type is " + this.price);
+//        System.out.println("Base price of " + this.name + " Burger with " + this.breadRollType +
+//                " roll type is " + this.price);
         if ( lettuce != null ){
             this.price += lettuce.getPrice();
-            System.out.println("Added " + lettuce.getName() + " ... " + " price : " + lettuce.getPrice());
         }
         if ( tomato != null ){
             this.price += tomato.getPrice();
-            System.out.println("Added " + tomato.getName() + " ... " + " price : " + tomato.getPrice());
         }
         if ( carrot != null ){
             this.price += carrot.getPrice();
-            System.out.println("Added " + carrot.getName() + " ... " + " price : " + carrot.getPrice());
         }
         if ( cheese != null ){
             this.price += cheese.getPrice();
-            System.out.println("Added " + cheese.getName() + " ... " + " price : " + cheese.getPrice());
         }
-        return price;
+        sellBurgers();
     }
 
 
@@ -100,9 +102,15 @@ public class Hamburger {
         return meat;
     }
 
-    //Count burgers bought entirely
-    public int countSoldBurger(){
-        return NUMBER_OF_BURGERS_MADE++;
+    public double getPrice() {
+        return price;
     }
 
+    protected void sellBurgers(){
+        number_of_hamburgers_sold++;
+    }
+
+    public int getNumber_of_hamburgers_sold() {
+        return number_of_hamburgers_sold;
+    }
 }

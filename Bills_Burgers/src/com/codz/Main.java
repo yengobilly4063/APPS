@@ -24,18 +24,36 @@ public class Main {
 //        int i = 2;
 //        System.out.println(list.contains(i));
 
-        System.out.println("Welcome !!");
+//        System.out.println("Welcome !!");
 //        SellBurger.chooseRegularToppings();
 //        SellBurger.sellBurger();
 
-        Hamburger hamburger = new DeluxHamburger();
-        hamburger.addLettuce();
-        hamburger.addTomato();
-        hamburger.addCarrot();
-        hamburger.addCheese();
+        DeluxHamburger ham1 = new DeluxHamburger();
+        DeluxHamburger ham2 = new DeluxHamburger();
+        DeluxHamburger ham3 = new DeluxHamburger();
+        Hamburger ham4 = new Hamburger();
+        Hamburger ham5 = new Hamburger();
+//        ham1.customizeBurger();
+//        ham2.customizeBurger();
+//        System.out.println("Total price of " + ham1.getName() + " is " + ham1.customizeBurger());
 
-        System.out.println("Total price of " + hamburger.getName() + " is " + hamburger.customizeBurger());
-        System.out.println("Total number of burgers sold " + hamburger.countSoldBurger());
+//        System.out.println("Total number of Hamburgers sold " + ham1.getNumber_of_hamburgers_sold());
+//        ham4.addCheese();
+//        ham4.addCarrot();
+//        ham4.addTomato();
+//        ham4.addLettuce();
+//        ham4.customizeBurger();
+//        ham5.customizeBurger();
+
+        ham1.addChips();
+        ham1.addDrinks();
+        ham1.addCarrot();
+        ham1.customizeBurger();
+        System.out.println("Total price of " + ham1.getName() + " is " + ham1.getPrice());
+        System.out.println("Total number of Hamburgers sold " + ham1.getNumber_of_hamburgers_sold());
+
+
+
 
 
     }

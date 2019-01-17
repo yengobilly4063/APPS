@@ -12,13 +12,14 @@ public class HealthyBurger extends Hamburger{
     private double price;
     private final double basePrice = 2.7;
 
+    //Accounting Purpose
+    private static int number_of_healthyBurgers_sold;
+
     public HealthyBurger() {
         super.setName("Healthy Burger");
         super.setBreadRollType("brown rye");
         this.setMeat("Bacon");
         this.price = basePrice;
-
-        super.countSoldBurger();
     }
 
     public void addKetchup(){
@@ -32,8 +33,9 @@ public class HealthyBurger extends Hamburger{
     }
 
     @Override
-    public double customizeBurger() {
-        this.price =  super.customizeBurger();
+    public void customizeBurger() {
+        super.customizeBurger();
+        this.price =  super.getPrice();
 
         if ( ketchup != null){
             this.price += ketchup.getPrice();
@@ -43,7 +45,18 @@ public class HealthyBurger extends Hamburger{
             this.price += salad.getPrice();
             System.out.println("Added " + salad.getName() + " ... " + " price : " + salad.getPrice());
         }
+        sellBurgers();
+    }
 
-        return price;
+    //Accounting
+
+
+    @Override
+    protected void sellBurgers() {
+        number_of_healthyBurgers_sold++;
+    }
+
+    public static int getNumber_of_healthyBurgers_sold() {
+        return number_of_healthyBurgers_sold;
     }
 }
