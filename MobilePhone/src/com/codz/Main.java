@@ -1,13 +1,20 @@
 package com.codz;
 
+import com.codz.DataBase.DB_Connect;
+
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.sql.*;
 
 public class Main {
 
     private static MobilePhone mobilePhone = new MobilePhone();
     private static Scanner scan = new Scanner(System.in);
+
+
     public static void main(String[] args) {
+
+        Connection con = DB_Connect.getConnection();    //Get connection to Database
 
         printInstructions();
         boolean quit = false;
@@ -78,7 +85,7 @@ public class Main {
 
     public static void modifyContact(){
         boolean stopSearch = false;
-        Contacts currentContact = new Contacts();
+        Contacts currentContact;
         int count = 0;
 
         while(!stopSearch){
@@ -87,8 +94,7 @@ public class Main {
             currentContact = mobilePhone.findContact(searchInfo);
             if(currentContact != null){
                 System.out.println("Enter new contact details");
-                Contacts newContact;
-                mobilePhone.modifyContact(currentContact, newContact = getContact());
+                mobilePhone.modifyContact(currentContact, getContact());
                 stopSearch = true;
                 break;
             }else{

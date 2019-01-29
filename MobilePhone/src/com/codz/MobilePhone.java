@@ -19,7 +19,7 @@ public class MobilePhone {
     public void modifyContact(Contacts currentContact, Contacts newContact){
         int position = contact.indexOf(currentContact);
         if ( position>=0 ){
-            contact.add(position, newContact);
+            contact.set(position, newContact);
         }
     }
 
@@ -31,14 +31,13 @@ public class MobilePhone {
     }
 
     public Contacts findContact(String contactInfo){
-        Contacts contactFound = null;
         for (int i=0; i<contact.size(); i++){
             if ( (contact.get(i).getName().equals(contactInfo)) || (contact.get(i).getPhoneNumber().equals(contactInfo))  ){
-                contactFound = contact.get(i);
+                Contacts contactFound = contact.get(i);
+                return contactFound;
             }
         }
-        return contactFound;
-
+        return null;
     }
 
     public void printAllContacts(){
