@@ -14,7 +14,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Connection con = DB_Connect.getConnection();    //Get connection to Database
+//        Connection con = DB_Connect.getConnection();    //Get connection to Database
+        DB_Connect.createMobilePhoneContactDatabase();
 
         printInstructions();
         boolean quit = false;
