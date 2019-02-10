@@ -24,15 +24,19 @@ public class Main {
 
         //Add transactions to already existing customer
         bank.addCustomerTransaction("Tallinn", "Bill YENGO", 250.00);
+        bank.addCustomerTransaction("Tallinn", "Bill YENGO", -50.00);
         bank.addCustomerTransaction("Tartu", "Taras", 200.50);
         bank.addCustomerTransaction("Tallinn", "Percy", 250.00);
 
+        bank.addBranch("Elva");
+        bank.addCustomer("Elva", "John", 100.6);
 
 
         //Printouts
         bank.listCustomers("Tallinn", true, true);
-        bank.listCustomers("Tartu", true, true);
 
+        bank.listCustomers("Tartu", true, true);
+//
         bank.listCustomerDetails("Tallinn", "Bill YENGO", true);
         bank.listCustomerDetails("Tallinn", "Percy", false);
 

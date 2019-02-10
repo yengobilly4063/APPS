@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Customer {
     private String name;
     private ArrayList<Double> transactions;
-    private static double acountBalance = 0;
+    private double acountBalance = 0;
 
     public Customer(String name, double initialAmount) {
         this.name = name;
