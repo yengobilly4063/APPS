@@ -16,6 +16,7 @@ public class Bank {
             this.branches.add(new Branch(branchName));
             return true;
         }
+        System.out.println(branchName + " already exists");
         return false;
     }
 
@@ -42,6 +43,7 @@ public class Bank {
                 return checkedBranches;
             }
         }
+        System.out.println("Branch name :" + branchName.toUpperCase() + " does not exists");
         return null;
     }
 

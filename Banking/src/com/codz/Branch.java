@@ -25,6 +25,7 @@ public class Branch {
                 this.customers.add(new Customer(customerName, initialAmount));
                 return true;
             }
+            System.out.println("Customer " + customerName.toUpperCase() + " already exists");
             return false;
         }
 
