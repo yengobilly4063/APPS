@@ -9,8 +9,13 @@ public class Main {
         Bank bank = new Bank("SWEDBANK");
 
 
-        double trans = getTransactionValue();
-        System.out.println("Transsaction = " + trans);
+//        double trans = getTransactionValue();
+//        System.out.println("Transsaction = " + trans);
+
+//        boolean showBalance = showBalance();
+//        System.out.println("Final result " + showBalance);
+//        boolean showTransactions = showTransactions();
+//        System.out.println("Final result " + showTransactions);
 
         boolean stop = false;
 
@@ -28,17 +33,23 @@ public class Main {
                     addCustomer(bank);
                     break;
                 case 3:
+                    addTransaction(bank);
                     break;
                 case 4:
+                    listBranchCustomers(bank);
                     break;
                 case 5:
+                    listCustomerDetails(bank);
+                    break;
+                case 6:
+                    printOptions();
                     break;
             }
         }
 
 
 
-    }
+}
 
 
 
@@ -94,13 +105,13 @@ public class Main {
         System.out.println("3. To add Transaction to existing Customer");
         System.out.println("4. To list all Customers");
         System.out.println("5. To list specific Customer details");
+        System.out.println("Print out all options");
     }
 
 
 
     private static void addBranch(Bank bank){
-        System.out.print("Enter Branch name : ");
-        String branchName = scan.nextLine();
+        String branchName = getBranchName();
         if(bank.addBranch(branchName)){
             System.out.println("Branch was successfully added");
         }else{
@@ -109,15 +120,43 @@ public class Main {
     }
 
     private static void addCustomer(Bank bank){
-        System.out.print("Enter Branch Name : ");
-        String branchName = scan.nextLine();
-        System.out.println("Enter customer Name : ");
-        String customerName = scan.nextLine();
+        String branchName = getBranchName();
+        String customerName = getCustomerName();
         double transaction = getTransactionValue();
         if(bank.addCustomer(branchName, customerName, transaction)){
             System.out.println("Customer successfully added..");
         }else{
             System.out.println("Operation not successful");
+        }
+    }
+
+    private static void addTransaction(Bank bank){
+        String branchName = getBranchName();
+        String customerName = getCustomerName();
+        double transaction = getTransactionValue();
+        if (bank.addCustomerTransaction(branchName, customerName, transaction)){
+            System.out.println("Transaction successfully made");
+        }else {
+            System.out.println("Transaction not successful");
+        }
+    }
+
+    private static void listBranchCustomers(Bank bank){
+        String branchName = getBranchName();
+        boolean showTransaction = showTransactions();
+        boolean showBalance = showBalance();
+        if(bank.listCustomers(branchName, showTransaction, showBalance)){
+
+        }else{
+            System.out.println("Branch info NOT found");
+        }
+    }
+
+    private static void listCustomerDetails(Bank bank){
+        if(bank.listCustomerDetails(getBranchName(), getCustomerName(), showBalance())){
+
+        }else{
+            System.out.println("No customer info found");
         }
     }
 
@@ -127,6 +166,7 @@ public class Main {
 
         boolean stop = false;
         while (!stop){
+            System.out.println("Press 6 to view choices");
             System.out.print("Enter Choice :");
             boolean hasNextInt = scan.hasNextInt();
             if(hasNextInt){
@@ -144,7 +184,7 @@ public class Main {
     private static double getTransactionValue(){
         boolean stop = false;
         while (!stop){
-            System.out.println("Enter Customer Transaction : ");
+            System.out.print("Enter Customer Transaction : ");
             boolean hasNextDouble = scan.hasNextDouble();
             if(hasNextDouble){
                 double transaction = scan.nextDouble();
@@ -154,6 +194,110 @@ public class Main {
         }
         return -1;
     }
+
+    private static String getBranchName(){
+        System.out.print("Enter Branch Name : ");
+        String branchName = scan.nextLine();
+        return branchName;
+    }
+
+    private static String getCustomerName(){
+        System.out.print("Enter Customer Name : ");
+        String customerName = scan.nextLine();
+        return customerName;
+    }
+
+    private static boolean showTransactions(){
+
+        boolean showTransactions = false;
+        boolean stop = false;
+
+        while(!stop){
+            System.out.print("Show Customer Transactions? :");
+            boolean hasNextInt = scan.hasNextInt();
+
+            if(hasNextInt){
+                int choice = scan.nextInt();
+                scan.nextLine();
+                if(choice==1 || choice==2){
+                    switch (choice){
+                        case 1:
+                            showTransactions=true;
+                            stop = true;
+                            break;
+                        case 2:
+                            stop = true;
+                            break;
+                    }
+                }else{
+                    System.out.println("Valid options are (1 or 2)");
+                }
+            }else{
+                System.out.println("\nInvalid input\n");
+                scan.nextLine();
+            }
+        }
+        return showTransactions;
+    }
+
+    private static boolean showBalance(){
+
+        boolean showBalance = false;
+        boolean stop = false;
+
+        while(!stop){
+            System.out.print("Show Customer Balance? :");
+            boolean hasNextInt = scan.hasNextInt();
+
+            if(hasNextInt){
+                int choice = scan.nextInt();
+                scan.nextLine();
+                if(choice==1 || choice==2){
+                    switch (choice){
+                        case 1:
+                            showBalance=true;
+                            stop = true;
+                            break;
+                        case 2:
+                            stop = true;
+                            break;
+                    }
+                }else{
+                    System.out.println("Valid options are (1 or 2)");
+                }
+            }else{
+                System.out.println("\nInvalid input\n");
+                scan.nextLine();
+            }
+        }
+        return showBalance;
+    }
+
+
+//    private static boolean showTransactions(){
+//
+//        boolean showTransaction = false;
+//
+//        System.out.print("Do you wish to show Customer Transactions? :");
+//        boolean hasNextInt = scan.hasNextInt();
+//        if(hasNextInt){
+//            int choice = scan.nextInt();
+//            scan.nextLine();
+//            switch (choice){
+//                case 1:
+//                    showTransaction = true;
+//                    break;
+//                case 2:
+//                    showTransaction = false;
+//                    break;
+//            }
+//        }else{
+//            System.out.println("\nInvalid input\n");
+//            showTransactions();
+//        }
+//        return showTransaction;
+//    }
+
 
 
 
